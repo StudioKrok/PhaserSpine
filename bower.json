@@ -1,0 +1,20 @@
+{
+  "name": "PhaserSpine",
+  "version": "0.1.0",
+  "homepage": "https://github.com/StudioKrok/PhaserSpine",
+  "authors": [
+    "jefree <jgarzon920429@gmail.com>"
+  ],
+  "description": "Phaser plugin to load Spine animations.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.2.2"
+  }
+}
