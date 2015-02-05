@@ -11,9 +11,10 @@ spine.Bone.yDown = true;
  * @param basePath {String} Tha base path where to look for the images to be loaded
  * @param crossorigin {Boolean} Whether requests should be treated as crossorigin
  */
-PIXI.SpineTextureLoader = function(basePath)
+PIXI.SpineTextureLoader = function(basePath, crossorigin)
 {
     this.basePath = basePath;
+    this.crossorigin = crossorigin
 };
 
 /* constructor */
@@ -28,9 +29,7 @@ PIXI.SpineTextureLoader = function(basePath)
  */
 PIXI.SpineTextureLoader.prototype.load = function(page, file)
 {
-    page.rendererObject = PIXI.BaseTextureCache[this.basePath + '/'+ file];
-    
-    console.log(page.rendererObject);
+    page.rendererObject = PIXI.BaseTexture.fromImage(this.basePath + '/' + file, this.crossorigin);
 };
 
 /**
@@ -60,7 +59,7 @@ PIXI.Spine = function (game, key, basePath) {
 
     Phaser.Group.call(this, game);
 
-    var textureLoader = new PIXI.SpineTextureLoader(basePath);
+    var textureLoader = new PIXI.SpineTextureLoader(basePath, false);
     // create a spine atlas using the loaded text and a spine texture loader instance //
     var spineAtlas = new spine.Atlas(game.cache.getText(key+"Atlas"), textureLoader);
     // now we use an atlas attachment loader //
