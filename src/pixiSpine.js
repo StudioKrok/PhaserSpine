@@ -82,7 +82,6 @@ PIXI.Spine = function (game, key) {
     for (var i = 0, n = this.skeleton.drawOrder.length; i < n; i++) {
         var slot = this.skeleton.drawOrder[i];
         var attachment = slot.attachment;
-        //var slotContainer = new PIXI.DisplayObjectContainer();
         var slotContainer = new Phaser.Group(game);
         this.slotContainers.push(slotContainer);
         this.addChild(slotContainer);
@@ -204,7 +203,7 @@ PIXI.Spine.prototype.update = function(dt)
 
             slotContainer.rotation = -(slot.bone.worldRotation * spine.degRad);
 
-            slot.currentSprite.tint = PIXI.rgb2hex([slot.r,slot.g,slot.b]);
+            //slot.currentSprite.tint = PIXI.rgb2hex([slot.r,slot.g,slot.b]);
         }
         else if (type === spine.AttachmentType.skinnedmesh)
         {
@@ -279,7 +278,7 @@ PIXI.Spine.prototype.createSprite = function (slot, attachment) {
                                         descriptor.rotate ? descriptor.height : descriptor.width,
                                         descriptor.rotate ? descriptor.width : descriptor.height);
     var spriteTexture = new PIXI.Texture(baseTexture, spriteRect);
-    var sprite = new Phaser.Sprite(game, 0, 0, spriteTexture);
+    var sprite = new Phaser.Sprite(this.game, 0, 0, spriteTexture);
 
     var baseRotation = descriptor.rotate ? Math.PI * 0.5 : 0.0;
     sprite.scale.set(descriptor.width / descriptor.originalWidth, descriptor.height / descriptor.originalHeight);
@@ -288,6 +287,10 @@ PIXI.Spine.prototype.createSprite = function (slot, attachment) {
 
     slot.sprites = slot.sprites || {};
     slot.sprites[descriptor.name] = sprite;
+
+    //set bitmap for tint
+    this.game.phaserSpine.attachBitmap(sprite);
+
     return sprite;
 };
 

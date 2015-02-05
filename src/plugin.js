@@ -50,6 +50,42 @@ Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
   return spineObject;
 }
 
+Phaser.Plugin.PhaserSpine.prototype._attachBitmap = function(sprite) {
+  var bitmap = this.game.make.bitmapData(sprite.width, sprite.height);
+
+  var spriteData = {
+    scaleX: sprite.scale.x,
+    scaleY: sprite.scale.y,
+    rotation: sprite.rotation
+  };
+
+  //reset the rotation and scale of sprite to draw into the bitmap
+  sprite.scale.x = sprite.scale.y = 1;
+  sprite.rotation = 0;
+
+  //draw the sprite into the bitmap
+  bitmap.draw(sprite, sprite.width/2, sprite.height/2);
+  bitmap.update();
+
+  //resotre the scale and rotation of the sprite
+  sprite.scale.set(spriteData.scaleX, spriteData.scaleY);
+  sprite.rotation = spriteData.rotation;
+
+  sprite.loadTexture(bitmap);
+  sprite._bitmap = bitmap;
+}
+
+Phaser.Plugin.PhaserSpine.prototype.attachBitmap = function(sprite) {
+
+  if (sprite.texture.baseTexture.hasLoaded) {
+    this._attachBitmap(sprite);
+  }
+  else {
+    sprite.texture.on('update', this._attachBitmap.bind(this, sprite));
+  }
+}
+
+
 /**
  * [setMixByName wrap to stateData.setMixByName]
  * @param {String} fromName [source animation name]

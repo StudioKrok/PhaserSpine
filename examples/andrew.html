@@ -9,7 +9,7 @@
 <body>
     <script>
 
-    var andrew, game;
+    var andrew, game, circulo;
 
     game = new Phaser.Game(600, 500, Phaser.CANVAS, '', {preload: preload, create: create, render: render});
 
@@ -25,11 +25,19 @@
         game.time.advancedTiming = true;
         
         //create the spine object
-        andrew = game.add.spine(300, 300, "andrew");           
+        andrew = game.add.spine(300, 300, "andrew");
+        andrew.scale.x = 0.6;
+        andrew.scale.y = 0.6;
 
         //jump when click the screen
         game.input.onDown.add(function(){
             andrew.setAnimationByName(0, "greet", false);
+
+            andrew.skeleton.slots.forEach(function(slot) {
+
+                //slot.currentSprite._bitmap.replaceRGB(224, 224, 224, 255, r,g,b, 255);
+                slot.currentSprite.tint = Math.random() * 0xffffff;
+            })
         });
     }
 
