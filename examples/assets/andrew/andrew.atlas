@@ -1,0 +1,75 @@
+
+andrew.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+partes de robot andrew pruebas/brazo_der
+  rotate: false
+  xy: 429, 178
+  size: 48, 76
+  orig: 48, 76
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/brazo_izq
+  rotate: false
+  xy: 136, 36
+  size: 48, 76
+  orig: 48, 76
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/cabeza
+  rotate: false
+  xy: 2, 114
+  size: 167, 140
+  orig: 167, 140
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/mano_der
+  rotate: false
+  xy: 2, 2
+  size: 65, 110
+  orig: 65, 110
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/mano_izq
+  rotate: false
+  xy: 69, 2
+  size: 65, 110
+  orig: 65, 110
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/pie_der
+  rotate: false
+  xy: 171, 132
+  size: 79, 122
+  orig: 79, 122
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/pie_izq
+  rotate: false
+  xy: 252, 132
+  size: 79, 122
+  orig: 79, 122
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/pierna_der
+  rotate: true
+  xy: 333, 124
+  size: 36, 66
+  orig: 36, 66
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/pierna_izq
+  rotate: false
+  xy: 186, 64
+  size: 36, 66
+  orig: 36, 66
+  offset: 0, 0
+  index: -1
+partes de robot andrew pruebas/tronco
+  rotate: false
+  xy: 333, 162
+  size: 94, 92
+  orig: 94, 92
+  offset: 0, 0
+  index: -1
