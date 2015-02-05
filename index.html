@@ -16,7 +16,7 @@
     function preload() {
         game.plugins.add(Phaser.Plugin.PhaserSpine);
 
-        game.load.spine('spineboy', "examples/assets/spineboy.json");
+        game.load.spine('spineboy', "examples/assets/spineboy.json", "examples/assets");
     }
 
     function create() {
@@ -25,15 +25,13 @@
         game.time.advancedTiming = true;
 
         // create a spine boy
-        spineBoy = new PIXI.Spine(game, "spineboy", "examples/assets");
+        spineBoy = new PIXI.Spine(game, "spineboy");
 
         spineBoy.skeleton.setToSetupPose();
 
         // set the position
         spineBoy.position.x = 200;
         spineBoy.position.y = 400;
-
-        //spineBoy.scale.x = spineBoy.scale.y = window.innerHeight / 400;
 
         // set up the mixes!
         spineBoy.stateData.setMixByName("walk", "jump", 0.2);

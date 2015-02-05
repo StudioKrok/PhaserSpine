@@ -53,22 +53,22 @@ PIXI.SpineTextureLoader.prototype.unload = function(texture)
  * @constructor
  * @param url {String} The url of the spine anim file to be used
  */
-PIXI.Spine = function (game, key, basePath) {
+PIXI.Spine = function (game, key) {
     
-    if (basePath === "undefined") { basePath = ""; }
+    var data = game.cache.getSpine(key);
 
     Phaser.Group.call(this, game);
 
-    var textureLoader = new PIXI.SpineTextureLoader(basePath, false);
+    var textureLoader = new PIXI.SpineTextureLoader(data.basePath, false);
     // create a spine atlas using the loaded text and a spine texture loader instance //
-    var spineAtlas = new spine.Atlas(game.cache.getText(key+"Atlas"), textureLoader);
+    var spineAtlas = new spine.Atlas(game.cache.getText(data.atlas), textureLoader);
     // now we use an atlas attachment loader //
     var attachmentLoader = new spine.AtlasAttachmentLoader(spineAtlas);
     // spine animation
     var spineJsonParser = new spine.SkeletonJson(attachmentLoader);
 
     //get the Skeleton Data
-    this.spineData = spineJsonParser.readSkeletonData(game.cache.getJSON(key));
+    this.spineData = spineJsonParser.readSkeletonData(game.cache.getJSON(data.key));
 
     if (!this.spineData) {
         throw new Error('Spine data must be preloaded using Loader.spine');
