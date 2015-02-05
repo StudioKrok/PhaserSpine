@@ -28,6 +28,19 @@ Phaser.Loader.prototype.spine = function(key, url, basePath) {
   this.game.cache.addSpine(key, cacheData);
 }
 
+Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
+
+  var spineObject = new PIXI.Spine(game, key);
+
+  spineObject.skeleton.setToSetupPose();
+  spineObject.position.x = x;
+  spineObject.position.y = y;
+
+  this.game.stage.addChild(spineObject);
+
+  return spineObject;
+}
+
 /**
  * Spine assets dictiornary
  */

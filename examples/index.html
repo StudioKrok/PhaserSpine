@@ -23,25 +23,17 @@
 
         //enable fps calc
         game.time.advancedTiming = true;
-
-        // create a spine boy
-        spineBoy = new PIXI.Spine(game, "spineboy");
-
-        spineBoy.skeleton.setToSetupPose();
-
-        // set the position
-        spineBoy.position.x = 200;
-        spineBoy.position.y = 400;
+        
+        var spineBoy = game.add.spine(200, 400, "spineboy");
 
         // set up the mixes!
         spineBoy.stateData.setMixByName("walk", "jump", 0.2);
         spineBoy.stateData.setMixByName("jump", "walk", 0.4);
 
         // play animation
-
-        game.stage.addChild(spineBoy);
         spineBoy.state.setAnimationByName(0, "walk", true);            
 
+        //jump when click the screen
         game.input.onDown.add(function(){
             spineBoy.state.setAnimationByName(0, "jump", false);
             spineBoy.state.addAnimationByName(0, "walk", true, 0);
@@ -49,6 +41,8 @@
     }
 
     function render() {
+
+        //show the fps rate debug
         game.debug.text(game.time.fps || '--', 2, 14, "#00FF00");
     }
 
