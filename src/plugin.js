@@ -6,8 +6,9 @@ Phaser.Plugin.PhaserSpine = function(game, parent) {
 
 /**
  * [spine description]
- * @param  {string} key       Key to identify the Spine assets
- * @param  {string} url       The url for spine data JSON
+ * @param  {String} key         Key to identify the Spine assets
+ * @param  {String} url         The url for spine data JSON
+ * @param  {String} basePath    A suffix for textures load route.
  * @return {None}             
  */
 Phaser.Loader.prototype.spine = function(key, url, basePath) {
@@ -17,7 +18,6 @@ Phaser.Loader.prototype.spine = function(key, url, basePath) {
   var atlasKey = key+"Atlas";
 
   var cacheData = {
-    key: key,
     atlas: atlasKey,
     basePath: basePath
   }
@@ -29,11 +29,15 @@ Phaser.Loader.prototype.spine = function(key, url, basePath) {
 }
 
 /**
- * Spine assets and get/set methods for the cache.
+ * Spine assets dictiornary
  */
-
 Phaser.Cache.prototype._spine = {};
 
+/**
+ * [addSpine description]
+ * @param {String} key  [Unique identifier for this Spine assets]
+ * @param {Object} data [Object with atlas and basePath attributes]
+ */
 Phaser.Cache.prototype.addSpine = function(key, data) {
   this._spine[key] = data;
 }

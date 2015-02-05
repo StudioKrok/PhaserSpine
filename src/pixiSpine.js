@@ -44,14 +44,11 @@ PIXI.SpineTextureLoader.prototype.unload = function(texture)
 };
 
 /**
- * A class that enables the you to import and run your spine animations in pixi.
- * Spine animation data needs to be loaded using the PIXI.AssetLoader or PIXI.SpineLoader before it can be used by this class
- * See example 12 (http://www.goodboydigital.com/pixijs/examples/12/) to see a working example and check out the source
- *
  * @class Spine
- * @extends DisplayObjectContainer
+ * @extends Phaser.Group
  * @constructor
- * @param url {String} The url of the spine anim file to be used
+ * @param game {Phaser.Game} the game reference to add this object
+ * @param key {String} the key to find the assets for this object
  */
 PIXI.Spine = function (game, key) {
     
@@ -68,7 +65,7 @@ PIXI.Spine = function (game, key) {
     var spineJsonParser = new spine.SkeletonJson(attachmentLoader);
 
     //get the Skeleton Data
-    this.spineData = spineJsonParser.readSkeletonData(game.cache.getJSON(data.key));
+    this.spineData = spineJsonParser.readSkeletonData(game.cache.getJSON(key));
 
     if (!this.spineData) {
         throw new Error('Spine data must be preloaded using Loader.spine');
