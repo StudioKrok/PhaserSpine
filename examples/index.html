@@ -24,11 +24,12 @@
         //enable fps calc
         game.time.advancedTiming = true;
         
+        //create the spine object
         var spineBoy = game.add.spine(200, 400, "spineboy");
 
         // set up the mixes!
-        spineBoy.stateData.setMixByName("walk", "jump", 0.2);
-        spineBoy.stateData.setMixByName("jump", "walk", 0.4);
+        spineBoy.setMixByName("walk", "jump", 0.2);
+        spineBoy.setMixByName("jump", "walk", 0.4);
 
         // play animation
         spineBoy.state.setAnimationByName(0, "walk", true);            
