@@ -2,12 +2,12 @@
 
 ### To start the fun: 
 
-npm install
+`npm install`
 
-bower install
+`bower install`
 
-gulp
+`gulp`
 
-### in your browser go to:
+### In your browser go to:
   
-http://localhost:8080/
+`http://localhost:8080/`
