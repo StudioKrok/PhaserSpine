@@ -5,11 +5,9 @@ Phaser.Plugin.PhaserSpine = function(game, parent) {
 }
 
 /**
- * [spine 
- * 
- *   load the Spine assets from specified json url and basePath 
- *   for textures routes and save this in cache with the given key
- * ]
+ * [spine   load the Spine assets from specified json url and basePath 
+ *          for textures routes and save this in cache with the given key]
+ *          
  * @param  {String} key         Key to identify the Spine assets
  * @param  {String} url         The url for spine data JSON
  * @param  {String} basePath    A suffix for textures load route.
@@ -32,6 +30,13 @@ Phaser.Loader.prototype.spine = function(key, url, basePath) {
   this.game.cache.addSpine(key, cacheData);
 }
 
+/**
+ * [spine Add new Spine object to the game]
+ * @param  {Number} x   [the world x coord for this object]
+ * @param  {Number} y   [the world y coord for this object]
+ * @param  {String} key [the spine assets key for this object]
+ * @return {Spine}      [reference to the added Spine Object]
+ */
 Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
 
   var spineObject = new PIXI.Spine(game, key);
@@ -51,8 +56,29 @@ Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
  * @param {String} toName   [target animation name]
  * @param {Float} duration [Duration in the transition of the animations]
  */
-PIXI.Spine.prototype.setMixByName = function(fromName, toName, duration){
+PIXI.Spine.prototype.setMixByName = function(fromName, toName, duration) {
   this.stateData.setMixByName(fromName, toName, duration);
+}
+
+/**
+ * [setAnimationByName set the animation for the specified track]
+ * @param {Integer} trackIndex    [index to find the animation track]
+ * @param {String} animationName [the name of the aniamtion to set]
+ * @param {Boolean} loop          [true if the animation must continue in a loop]
+ */
+PIXI.Spine.prototype.setAnimationByName = function(trackIndex, animationName, loop) {
+  this.state.setAnimationByName(trackIndex, animationName, loop);
+}
+
+/**
+ * [addAnimationByName description]
+ * @param {[type]} trackIndex    [description]
+ * @param {[type]} animationName [description]
+ * @param {[type]} loop          [description]
+ * @param {[type]} delay         [description]
+ */
+PIXI.Spine.prototype.addAnimationByName = function(trackIndex, animationName, loop, delay) {
+  this.state.addAnimationByName(trackIndex, animationName, loop, delay);
 }
 
 /**

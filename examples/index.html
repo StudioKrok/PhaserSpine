@@ -25,19 +25,19 @@
         game.time.advancedTiming = true;
         
         //create the spine object
-        var spineBoy = game.add.spine(200, 400, "spineboy");
+        spineBoy = game.add.spine(200, 400, "spineboy");
 
         // set up the mixes!
         spineBoy.setMixByName("walk", "jump", 0.2);
         spineBoy.setMixByName("jump", "walk", 0.4);
 
         // play animation
-        spineBoy.state.setAnimationByName(0, "walk", true);            
+        spineBoy.setAnimationByName(0, "walk", true);            
 
         //jump when click the screen
         game.input.onDown.add(function(){
-            spineBoy.state.setAnimationByName(0, "jump", false);
-            spineBoy.state.addAnimationByName(0, "walk", true, 0);
+            spineBoy.setAnimationByName(0, "jump", false);
+            spineBoy.addAnimationByName(0, "walk", true, 0);
         });
     }
 
