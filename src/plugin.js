@@ -50,6 +50,10 @@ Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
   return spineObject;
 }
 
+/**
+ * [_attachBitmap set a bitmapData as texture for the given sprite]
+ * @param  {Phaser.Sprite} sprite [the sprite to attach a bitmapData as texture]
+ */
 Phaser.Plugin.PhaserSpine.prototype._attachBitmap = function(sprite) {
   var bitmap = this.game.make.bitmapData(sprite.width, sprite.height);
 
@@ -75,6 +79,13 @@ Phaser.Plugin.PhaserSpine.prototype._attachBitmap = function(sprite) {
   sprite._bitmap = bitmap;
 }
 
+/**
+ * [attachBitmap call _attachBitmap if baseTexture has loaded, 
+ *               otherwise set a callback to _attachBitmap on
+ *               texture update]
+ *               
+ * @param  {Phaser.Sprite} sprite [the sprite to attach a bitmapData as texture]
+ */
 Phaser.Plugin.PhaserSpine.prototype.attachBitmap = function(sprite) {
 
   if (sprite.texture.baseTexture.hasLoaded) {
