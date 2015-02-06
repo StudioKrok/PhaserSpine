@@ -10,18 +10,15 @@ Phaser.Plugin.PhaserSpine = function(game, parent) {
  *          
  * @param  {String} key         Key to identify the Spine assets
  * @param  {String} url         The url for spine data JSON
- * @param  {String} basePath    A suffix for textures load route.
  * @return {None}             
  */
-Phaser.Loader.prototype.spine = function(key, url, basePath) {
+Phaser.Loader.prototype.spine = function(key, url) {
   
-  if (basePath === "undefined") { basePath = ""; }
-
   var atlasKey = key+"Atlas";
 
   var cacheData = {
     atlas: atlasKey,
-    basePath: basePath
+    basePath: url.substring(0, url.lastIndexOf('/'))
   }
 
   this.json(key, url);
