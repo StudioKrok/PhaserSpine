@@ -39,7 +39,7 @@ Phaser.Loader.prototype.spine = function(key, url, basePath) {
  */
 Phaser.GameObjectFactory.prototype.spine = function(x, y, key) {
 
-  var spineObject = new PIXI.Spine(game, key);
+  var spineObject = new PIXI.Spine(this.game, key);
 
   spineObject.skeleton.setToSetupPose();
   spineObject.position.x = x;
